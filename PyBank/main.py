@@ -6,7 +6,7 @@ import csv
 file_to_load = os.path.join(".", "Resources", "budget_data.csv")
 file_to_output = os.path.join(".", "budget_analysis.txt")
 
-total_months = 0
+total_months = 1
 net = 0
 net_change_list = []
 greatest = ["", 0]
