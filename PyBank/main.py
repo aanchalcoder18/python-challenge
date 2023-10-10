@@ -3,10 +3,13 @@ import os
 import csv
 
 #attaching budget data to main.py
-file_to_load = os.path.join(".", "Resources", "budget_data.csv")
-file_to_output = os.path.join(".", "budget_analysis.txt")
+#file_to_load = os.path.join(".", "Resources", "budget_data.csv")
+#file_to_output = os.path.join(".", "budget_analysis.txt")
 
-
+current_directory = os.path.dirname(os.path.abspath(__file__)) 
+file_to_load = os.path.join(current_directory, "Resources", "budget_data.csv")   
+current_directory_output = os.path.dirname(os.path.abspath(__file__)) 
+file_to_output = os.path.join(current_directory_output, ".", "budget_analysis.txt")
 
 total_months = 1
 net = 0
@@ -62,3 +65,6 @@ output = (
 )
 
 print(output)
+
+with open(file_to_output, "w") as txt_file:
+    txt_file.write(output)
