@@ -3,8 +3,13 @@ import os
 import csv
 
 #file attachment and output
-file_to_load = os.path.join(".", "Resources", "election_data.csv")
-file_to_output = os.path.join(".", "election_analysis.txt")
+#file_to_load = os.path.join(".", "Resources", "election_data.csv")
+#file_to_output = os.path.join(".", "election_analysis.txt")
+
+current_directory = os.path.dirname(os.path.abspath(__file__)) 
+file_to_load = os.path.join(current_directory, "Resources", "election_data.csv")   
+current_directory_output = os.path.dirname(os.path.abspath(__file__)) 
+file_to_output = os.path.join(current_directory_output, ".", "election_analysis.txt")
 
 total_votes = 0
 
@@ -34,7 +39,7 @@ with open (file_to_load) as election_data:
         candidate_votes[candidate_name] += 1    
 
     #print(candidate_options)
-    #print(candidate_votes)
+    print(candidate_votes)
 
 
 
@@ -47,27 +52,28 @@ with open(file_to_output, "w") as txt_file:
         f"----------------------\n"
     )
 
-print(election_results)
-txt_file.write(election_results)
+    print(election_results)
+    txt_file.write(election_results)
 
-for candidate in candidate_votes:
-    votes = candidate_votes[candidate]
-    vote_percentage = float(votes) / float(total_votes) *100
-    if(votes > winning_count):
-        winning_count = votes
-        winning_candidate = candidate
-    voter_output = f"{candidate}: {vote_percentage:.3f}%({votes})\n"
+    for candidate in candidate_votes:
+        votes = candidate_votes[candidate]
+        vote_percentage = float(votes) / float(total_votes) *100
+        if(votes > winning_count):
+            winning_count = votes
+            winning_candidate = candidate
+        voter_output = f"{candidate}: {vote_percentage:.3f}%({votes})\n"
+        
     
     #print(votes)
     #print(vote_percentage)
     print(voter_output)
     txt_file.write(voter_output)
 
-winning_candidate_summary = (
-    f"----------------------\n"
-    f"Winner: {winning_candidate}\n"
-    f"----------------------\n"
-)
+    winning_candidate_summary = (
+        f"----------------------\n"
+        f"Winner: {winning_candidate}\n"
+        f"----------------------\n"
+    )
 
-print(winning_candidate_summary)    
-txt_file.write(winning_candidate_summary)
+    print(winning_candidate_summary)    
+    txt_file.write(winning_candidate_summary)
