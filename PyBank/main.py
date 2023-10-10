@@ -9,7 +9,7 @@ import csv
 current_directory = os.path.dirname(os.path.abspath(__file__)) 
 file_to_load = os.path.join(current_directory, "Resources", "budget_data.csv")   
 current_directory_output = os.path.dirname(os.path.abspath(__file__)) 
-file_to_output = os.path.join(current_directory_output, ".", "budget_analysis.txt")
+file_to_output = os.path.join(current_directory_output, "analysis", "budget_analysis.txt")
 
 total_months = 1
 net = 0

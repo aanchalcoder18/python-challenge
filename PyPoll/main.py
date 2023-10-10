@@ -9,7 +9,7 @@ import csv
 current_directory = os.path.dirname(os.path.abspath(__file__)) 
 file_to_load = os.path.join(current_directory, "Resources", "election_data.csv")   
 current_directory_output = os.path.dirname(os.path.abspath(__file__)) 
-file_to_output = os.path.join(current_directory_output, ".", "election_analysis.txt")
+file_to_output = os.path.join(current_directory_output, "analysis", "election_analysis.txt")
 
 total_votes = 0
 
@@ -39,7 +39,7 @@ with open (file_to_load) as election_data:
         candidate_votes[candidate_name] += 1    
 
     #print(candidate_options)
-    print(candidate_votes)
+    #print(candidate_votes)
 
 
 
@@ -56,6 +56,7 @@ with open(file_to_output, "w") as txt_file:
     txt_file.write(election_results)
 
     for candidate in candidate_votes:
+        #print(candidate)
         votes = candidate_votes[candidate]
         vote_percentage = float(votes) / float(total_votes) *100
         if(votes > winning_count):
@@ -64,10 +65,10 @@ with open(file_to_output, "w") as txt_file:
         voter_output = f"{candidate}: {vote_percentage:.3f}%({votes})\n"
         
     
-    #print(votes)
-    #print(vote_percentage)
-    print(voter_output)
-    txt_file.write(voter_output)
+        #print(votes)
+        #print(vote_percentage)
+        print(voter_output)
+        txt_file.write(voter_output)
 
     winning_candidate_summary = (
         f"----------------------\n"
